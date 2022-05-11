@@ -10,7 +10,7 @@ conda_source_dir=~/miniconda3
 source ${conda_source_dir}/etc/profile.d/conda.sh
 
 rm -rf ./Danesfield ./htmlcov
-git clone ${git_branch_new} -- ${dashboard_git_url}
+git clone --recursive ${git_branch_new} -- ${dashboard_git_url}
 cd ./Danesfield
 
 conda env create -f deployment/conda/conda_env.yml
