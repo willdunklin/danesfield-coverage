@@ -28,10 +28,9 @@ else
     conda activate core3d-dev
 fi
 
-# set coverage sources to all directories (default is to only include directories with __init__.py)
-# excluding danesfield/geon_fitting/tf_ops because of python 2 usage
-find ./danesfield -type d \
-    -not -name __pycache__ \
+# set coverage targets to all files in ./danesfield and ./tools
+#   excluding danesfield/geon_fitting/tf_ops because of python 2 code
+find . -type d \( -path "./danesfield*" -or -path "./tools*" \) \
     -not -path "./danesfield/geon_fitting/tf_ops*" \
     | tr '\n' ',' | \
     coverage run --source $(</dev/stdin) -m pytest ./tests
