@@ -18,7 +18,11 @@ to reflect your conda base environment path. For this tool, it is set to
 located elsewhere.
 
 To get your conda base environment directory you can run ``conda info`` and copy
-the value from ``base environment : <...>``.
+the value from:
+
+.. code-block::
+
+    base environment : <...>
 
 Git
 ---
