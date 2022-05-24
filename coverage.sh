@@ -2,17 +2,20 @@
 this_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd $this_dir
 
+# git configuration
 dashboard_git_url="https://github.com/Kitware/Danesfield.git"
 dashboard_git_branch="master"
-git_branch_new="-b ${dashboard_git_branch}"
+# conda base environment path
 conda_source_dir=~/miniconda3
 
 source ${conda_source_dir}/etc/profile.d/conda.sh
 
+# clean files and clone repo
 rm -rf ./Danesfield ./htmlcov
-git clone --recursive ${git_branch_new} -- ${dashboard_git_url}
+git clone --recursive -b ${dashboard_git_branch} -- ${dashboard_git_url}
 cd ./Danesfield
 
+# install dependencies
 conda env create -f deployment/conda/conda_env.yml
 conda env update -f deployment/conda/conda_env.yml
 conda activate core3d-dev
