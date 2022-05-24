@@ -15,13 +15,18 @@ rm -rf ./Danesfield ./htmlcov
 git clone --recursive -b ${dashboard_git_branch} -- ${dashboard_git_url}
 cd ./Danesfield
 
-# install dependencies
-conda env create -f deployment/conda/conda_env.yml
-conda env update -f deployment/conda/conda_env.yml
-conda activate core3d-dev
-conda install -y coverage
-conda install -y -c conda-forge lark
-pip install -e .
+if [ $1 != "--skip" ] && [ $1 != "-s" ]
+then
+    # install dependencies
+    conda env create -f deployment/conda/conda_env.yml
+    conda env update -f deployment/conda/conda_env.yml
+    conda activate core3d-dev
+    conda install -y coverage
+    conda install -y -c conda-forge lark
+    pip install -e .
+else
+    conda activate core3d-dev
+fi
 
 # set coverage sources to all directories (default is to only include directories with __init__.py)
 # excluding danesfield/geon_fitting/tf_ops because of python 2 usage
