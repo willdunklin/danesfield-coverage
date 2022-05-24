@@ -26,6 +26,7 @@ then
     pip install -e .
 else
     conda activate core3d-dev
+    pip install -e .
 fi
 
 # set coverage targets to all files in ./danesfield and ./tools
