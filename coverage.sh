@@ -17,6 +17,7 @@ conda env create -f deployment/conda/conda_env.yml
 conda env update -f deployment/conda/conda_env.yml
 conda activate core3d-dev
 conda install -y coverage
+conda install -y -c conda-forge lark
 pip install -e .
 
 # set coverage sources to all directories (default is to only include directories with __init__.py)
